@@ -14,7 +14,9 @@ void primeFactor(unsigned long long int n){
 			n/=int;
 		}
 	}
-	
+	if (n>2){
+		primeFactor.push_back(n);
+	}
 }
 int main(){
 	int n;
