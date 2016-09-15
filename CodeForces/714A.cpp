@@ -14,8 +14,22 @@ using namespace std;
 #define PI  3.14159265358979323846
 #define MAX 1000002
 #define vpi(v) vector <pair <long long int, long long int> > v
-#define lli long long int 
+#define lli  long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
+	lli l1,r1,l2,r2,k,ans(0);
+	cin>>l1>>r1>>l2>>r2>>k;
+	lli from(max(l1,l2)),to(min(r1,r2));
+	if (r2<l1 or l2>r1){
+		cout<<0;
+		//debug();
+	}
+	else{
+		ans =  to - from + 1;
+		if (k>=from and k<=to){
+			ans--;
+		}
+		cout<<ans;
+	}
 	return 0;
 }	
