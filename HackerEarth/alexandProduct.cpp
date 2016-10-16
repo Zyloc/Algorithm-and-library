@@ -17,6 +17,27 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	zyloc(){
+		string s;
+		lli a,b,mode(1),ans(1);
+		cin>>s;
+		cin>>a>>b;
+		loop(i,1,a){
+			mode = mode*10;
+		}
+		mode += b;
+		//cout<<mode<<endl;
+		for(lli i=0;i<s.length();){
+			lli dummy(0);
+			loop(j,0,((s[i]-'0')-1)){
+				if (i+j<s.length())
+					dummy = dummy*10+(s[i+j]-'0');
+			} 
+			//cout<<dummy<<endl;
+			i += (s[i]-'0');
+			ans = (ans%mode*dummy%mode)%mode;
+		}
+		cout<<ans<<endl;
+	}
 	return 0;
 }	

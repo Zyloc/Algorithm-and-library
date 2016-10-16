@@ -17,6 +17,29 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	vi(red);
+	vi(blue);
+	lli n,x,ans(0);
+	string s;
+	cin>>n;
+	loop(i,0,n-1){
+		cin>>s;
+		if (s[s.length()-1]=='R'){
+			lli number(0),iterator(0);
+			while(iterator<s.length()-1){
+				number = (number*10) + s[iterator]-'0';
+				iterator++; 
+			}
+			cout<<number<<endl;
+		}
+		else{
+			lli number(0),iterator(0);
+			while(iterator<s.length()-1){
+				number = (number*10) + s[iterator]-'0';
+				iterator++; 
+			}
+			cout<<number<<endl;
+		} 
+	}
 	return 0;
 }	

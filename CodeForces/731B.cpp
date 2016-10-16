@@ -17,6 +17,43 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,x,remaining(0);
+	cin>>n;
+	vi(v);
+	loop(i,0,n-1){
+		cin>>x;
+		v.pb(x);
+	}
+	if (n==1){
+		if (n%2==0){
+			cout<<"YES"<<endl;
+		}
+		else{
+			cout<<"NO"<<endl;
+		}
+	}
+	else{
+		loop(i,0,n-1){
+			if ((v[i]+remaining)%2==0){
+				remaining = 0;
+			}
+			else{
+				if (i<n-1 and v[i+1]>0){
+					remaining = 1;
+				}
+				else{
+					cout<<"NO"<<endl;
+					return 0;
+				}
+			}
+		}
+		//debug();
+		if (remaining==0){
+			cout<<"YES"<<endl;
+		}
+		else{
+			cout<<"NO"<<endl;
+		}
+	}
 	return 0;
 }	

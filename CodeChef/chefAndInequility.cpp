@@ -17,6 +17,32 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	zyloc(){
+		lli a,b,c,d;
+		cin>>a>>b>>c>>d;
+		if (d<=a){
+			cout<<"0"<<endl;
+		}
+		else if (a<=c and d<=b){
+			cout<<(c-a)*(d-c+1)+((d-c)*(d-c+1))/2<<endl;
+		}
+		else if (a<=c and d>=b){
+			cout<<(c-a)*(d-c+1)+((d-c)*(d-c+1))/2-((d-b-1)*(d-b))/2<<endl;	
+		}
+		else if(c>=b){
+			if (c==b){
+				cout<<(b-a)*(d-c+1)+(d-c)<<endl;
+			}
+			else{
+				cout<<(b-a+1)*(d-c+1)<<endl;
+			}
+		}
+		else if (c<=a and d>=b){
+			cout<<((d-a+1)*(d-a))/2-((d-b-1)*(d-b))/2<<endl;	
+		}
+		else if (c<=a and d<=b){
+			cout<<((d-a)*(d-a+1))/2<<endl;
+		}
+	}
 	return 0;
 }	

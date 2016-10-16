@@ -17,6 +17,34 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli a,b;
+	cin>>a>>b;
+	vi(v);
+	v.pb(b);
+	while(b>a){
+		
+		if (b%2==0){
+			v.pb(b/2);
+			b/= 2;
+		}
+		else if((b-1)%10==0){
+			v.pb((b-1)/10);
+			b = (b-1)/10;
+		} 
+		else{
+			cout<<"NO";
+			return 0;
+		}
+	}
+	if (b==a){
+		cout<<"YES"<<endl;
+		cout<<v.size()<<endl;
+		pool(i,v.size()-1,0){
+			cout<<v[i]<<" ";
+		}
+	}
+	else {
+		cout<<"NO";
+	}
 	return 0;
 }	

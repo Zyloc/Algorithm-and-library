@@ -17,6 +17,20 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n;
+	cin>>n;
+	string s;
+	cin>>s;
+	map<char,lli> mp;
+	loop(i,0,s.length()-1){
+		mp[s[i]]++;
+	}
+	lli ans(INT_MAX);
+	ans = min(ans,mp['h']/2);
+	ans = min(ans,mp['a']/2);
+	ans = min(ans,min(mp['c'],mp['k']));
+	ans = min(ans,min(mp['e']/2,mp['r']/2));
+	ans = min(ans,mp['t']);
+	cout<<ans<<endl;
 	return 0;
 }	

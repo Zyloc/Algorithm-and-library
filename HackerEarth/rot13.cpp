@@ -17,6 +17,20 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	zyloc(){
+		map<char,lli>mp;
+		string s,ans;
+		cin>>s;
+		loop(i,0,s.length()-1){
+			if (mp[s[i]]==0){
+				ans+=char('a'+(s[i]-'a'+13)%26);
+			}
+			else{
+				ans+=char('a'+(s[i]-'a'+13+mp[s[i]])%26);	
+			}
+			mp[s[i]]++;
+		}
+		cout<<ans<<endl;
+	}
 	return 0;
 }	

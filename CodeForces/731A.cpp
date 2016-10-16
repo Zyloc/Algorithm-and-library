@@ -17,6 +17,14 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	string s;
+	cin>>s;
+	lli pos(0),ans(0);
+	loop(i,0,s.length()-1){
+		pos = min(abs(s[i]-char('a'+pos)),26-abs(s[i]-char('a'+pos)));
+		ans += pos;
+		pos = s[i]-'a';
+	}
+	cout<<ans<<endl;
 	return 0;
 }	

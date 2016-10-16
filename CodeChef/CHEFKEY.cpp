@@ -17,6 +17,18 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	zyloc(){
+		lli n,m,c,ans(0);
+		cin>>n>>m>>c;
+		if (n>m){
+			swap(n,m);
+		}
+		loop(i,1,n){
+			if(c%i==0 && c/i <=m){
+				++ans;
+			}
+		}
+		cout<<ans<<endl;
+	}
 	return 0;
 }	

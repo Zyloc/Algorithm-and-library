@@ -16,7 +16,27 @@ using namespace std;
 #define vpi(v) vector <pair <long long int, long long int> > v
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
+bool cmp(pair<string,lli> p1,pair<string,lli> p2){
+	if (p1.second>p2.second){
+		return true;
+	}
+	else if (p1.second == p2.second){
+		return p1.first<p2.first;
+	}
+	return false;
+}
 int main(){
-	
+	lli n,k,x;
+	cin>>n>>k;
+	vector<pair<string,lli> > v;
+	string s;
+	loop(i,0,n-1){
+		cin>>s>>x;
+		v.pb(mp(s,x));
+	}
+	sort(v.begin(),v.end(),cmp);
+	loop(i,0,k-1){
+		cout<<v[i].first<<" "<<v[i].second<<endl;
+	}
 	return 0;
 }	

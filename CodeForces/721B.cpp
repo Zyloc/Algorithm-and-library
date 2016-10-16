@@ -17,6 +17,17 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,k,x;
+	cin>>n>>k;
+	string s;
+	vi(v);
+	loop(i,0,n-1){
+		cin>>s;
+		v.pb(s.length());
+	}
+	cin>>s;
+	sort(v.begin(),v.end());
+	lli mini(lower_bound(v.begin(),v.end(),s.length())-v.begin()),maxi(upper_bound(v.begin(),v.end(),s.length())-v.begin());
+	cout<<(mini/k)*5+mini+1<<" "<<((maxi-1)/k)*5+maxi<<endl;
 	return 0;
 }	

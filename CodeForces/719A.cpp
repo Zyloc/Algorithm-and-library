@@ -17,6 +17,33 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,x;
+	vi(v);
+	cin>>n;
+	loop(i,0,n-1){
+		cin>>x;
+		v.pb(x);
+	}
+	if (n==1){
+		cout<<"-1";
+	}
+	else{
+		if (v[n-1]>v[n-2]){
+			if (v[n-1]==15){
+				cout<<"DOWN";
+			}
+			else{
+				cout<<"UP";
+			}
+		}
+		else{
+			if (v[n-1]==0){
+				cout<<"UP";
+			}
+			else{
+				cout<<"DOWN";
+			}
+		}
+	}
 	return 0;
 }	

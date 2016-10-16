@@ -29,11 +29,11 @@ using namespace std;
 #define vpi(v) vector <pair <long long int, long long int> > v
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
-bool possible(string& s[],lli n,lli startX,lli startY,lli radius){
-	if(startX-radius < 0 or startY-radius < 0 ){
+bool possible(string s[],lli n,lli startX,lli startY,lli radius){
+	if(startX-radius < 0 or startY-radius < 0){
 		return false;
 	}
-	if (startX+radius > n or startY+radius > n){
+	if (startX+radius >= n or startY+radius>=n){
 		return false;
 	}
 	lli squareSide(2*radius),x,y;
@@ -42,11 +42,11 @@ bool possible(string& s[],lli n,lli startX,lli startY,lli radius){
 			x = i - radius;
 			y = j - radius;
 			if ( x*x + y*y <= radius*radius ){
-				if (startX+x >= 0 and startY+y>=0 and startX+x <= n and startY+y <= n){
+				if (startX+x >= 0 and startY+y >= 0 and startX+x<n and startY+y<n){
 					if (s[startX+x][startY+y]=='*'){
 						return false;
-					}
-				}	
+					}	
+				}
 			} 
 		}
 	}

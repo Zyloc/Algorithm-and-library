@@ -17,6 +17,10 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	zyloc(){
+		double x,y;
+		cin>>x>>y;
+		printf("%.10f\n", 2*x/(3*y));
+	}
 	return 0;
 }	

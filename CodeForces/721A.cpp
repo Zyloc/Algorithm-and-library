@@ -17,6 +17,32 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,start(0),end(0),ans(0);
+	cin>>n;
+	string s;
+	cin>>s;
+	vi(v);
+	loop(i,0,s.length()-1){
+		if (s[i]=='W'){
+			if (end-start>0){
+				v.pb(end-start);
+				ans++;
+			}	
+			start = i;
+			end = i;
+		}
+		else{
+			end++;
+		}
+	}
+	if (start!=end){
+		ans++;
+		v.pb(end-start);
+	}
+	cout<<ans<<endl;
+    if (v.size()>=1)
+	loop(i,0,v.size()-1){
+		cout<<v[i]<<" ";
+	}
 	return 0;
 }	

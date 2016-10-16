@@ -17,6 +17,26 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,x,y,q;
+	cin>>n;
+	vector<lli> parent(n+1);
+	loop(i,0,n-2){
+		cin>>x>>y;
+		parent[y] = x;
+	}
+	cin>>q;
+	loop(i,0,q-1){
+		cin>>x>>y;
+		lli count(y);
+		while(count!=0){
+			x = parent[x];
+			count--;
+		}
+		if(x==0){
+			cout<<1<<endl;
+		}
+		else
+			cout<<x<<endl;
+	}
 	return 0;
 }	

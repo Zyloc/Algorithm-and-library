@@ -17,6 +17,21 @@ using namespace std;
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
 int main(){
-	
+	lli n,k,x,ans(1),last(0);
+	cin>>n>>k;
+	loop(i,0,n-1){
+		cin>>x;
+		if (i>0){
+			if (x - last <= k){
+				ans++;
+			}
+			else{
+				ans = 1;
+			}
+		}
+		last = x;
+		//cout<<ans<<endl;
+	}
+	cout<<ans<<endl;;
 	return 0;
 }	
