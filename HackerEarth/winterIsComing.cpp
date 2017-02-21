@@ -1,0 +1,41 @@
+/*
+ * Satyam Swarnkar (Zyloc), NIT Silchar
+*/
+#include <bits/stdc++.h>
+#define lli long long int
+using namespace std;
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	lli t;
+	cin>>t;
+	while(t--){
+	    lli n;
+	    cin>>n;
+	    lli prefix[n+1];
+	    prefix[0] = 0;
+	    for(int i=1;i<=n;i++){
+	        cin>>prefix[i];
+	        prefix[i]+=prefix[i-1];
+	    }
+	    lli maxValue(prefix[n]),start(0),end(0),minLength(INT_MAX);
+	    for(int i=1;i<=n;i++){
+	    	lli dummySearch(prefix[i-1]+n);
+	        while(dummySearch <= maxValue){
+	        	if(binary_search(prefix,prefix+n+1,dummySearch)){
+	                lli dummyEnd(lower_bound(prefix,prefix+n+1,dummySearch)-prefix);
+	                if(dummyEnd-i+1 < minLength){
+	                    start = i;
+	                    end = dummyEnd;
+	                    minLength = dummyEnd-start+1;
+	                }
+	                break;
+	            }
+	            dummySearch+=n;
+	            
+	        }
+	    }
+	    cout<<start<<" "<<end<<endl;
+	}
+	return 0;
+}

@@ -16,8 +16,7 @@ using namespace std;
 #define vpi(v) vector <pair <long long int, long long int> > v
 #define lli long long int 
 #define debug() cout<<"######"<<endl 
-bool IsPrime(int number)
-{
+bool IsPrime(long long int number){
  
     if (number == 2 || number == 3)
         return true;
@@ -25,7 +24,7 @@ bool IsPrime(int number)
     if (number % 2 == 0 || number % 3 == 0)
         return false;
  
-    int divisor = 6;
+    long long int divisor = 6;
     while (divisor * divisor - 2 * divisor + 1 <= number)
     {
  
@@ -43,15 +42,17 @@ bool IsPrime(int number)
  
 }
  
-int NextPrime(int a)
+long long int NextPrime(long long int a)
 {
  
-    while (!IsPrime(++a)) 
+    while (!IsPrime(--a)) 
     { }
     return a;
  
 }
 int main(){
-	
+    lli x;
+    cin>>x;
+    cout<<NextPrime(x+1);	
 	return 0;
 }	

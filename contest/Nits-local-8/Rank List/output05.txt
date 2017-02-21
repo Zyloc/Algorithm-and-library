@@ -1,0 +1,10 @@
+aaarun 8 20
+aarruunn 10 20
+aarun 7 20
+arrun 9 20
+aruan 6 20
+arun 1 20
+aruna 2 20
+arunn 4 20
+arunnn 5 20
+aurna 3 20

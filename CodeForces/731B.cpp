@@ -2,58 +2,32 @@
  * Satyam Swarnkar (Zyloc), NIT Silchar
 */
 #include <bits/stdc++.h>
+#define lli long long int
 using namespace std;
-#define loop(i,start,end) for (lli i=start;i<=end;i++)
-#define pool(i,start,end) for(lli i=start;i>=end;i--)
-#define zyloc() lli t;cin>>t;while(t--)
-#define vi(v) vector <long long  int> v;
-#define pb(n) push_back(n)
-#define mp(a,b) make_pair(a,b)
-#define fill(a,value) memset(a,value,sizeof(a)) 
-#define MOD 1000000007
-#define PI  3.14159265358979323846
-#define MAX 1000002
-#define vpi(v) vector <pair <long long int, long long int> > v
-#define lli long long int 
-#define debug() cout<<"######"<<endl 
 int main(){
-	lli n,x,remaining(0);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	lli n,x;
+	bool flag(false);
 	cin>>n;
-	vi(v);
-	loop(i,0,n-1){
+	vector<int> v;
+	for(int i=0;i<n;i++){
 		cin>>x;
-		v.pb(x);
+		v.push_back(x);
+		if(i!=0 and x == 0){
+			if(v[i-1]&1){
+				flag = true;
+			}
+		}
+		if(i>0){
+			v[i] = v[i]+v[i-1]%2;
+		}
 	}
-	if (n==1){
-		if (n%2==0){
-			cout<<"YES"<<endl;
-		}
-		else{
-			cout<<"NO"<<endl;
-		}
+	if(flag or v[n-1]&1){
+		cout<<"NO";
 	}
 	else{
-		loop(i,0,n-1){
-			if ((v[i]+remaining)%2==0){
-				remaining = 0;
-			}
-			else{
-				if (i<n-1 and v[i+1]>0){
-					remaining = 1;
-				}
-				else{
-					cout<<"NO"<<endl;
-					return 0;
-				}
-			}
-		}
-		//debug();
-		if (remaining==0){
-			cout<<"YES"<<endl;
-		}
-		else{
-			cout<<"NO"<<endl;
-		}
+		cout<<"YES";
 	}
 	return 0;
-}	
+}

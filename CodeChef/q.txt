@@ -1,0 +1,16 @@
+bool dfs(int start){
+	if(graph[start].size() > 0){
+		if(copies[start] > 0 and dfs(graph[start][0])){
+			copies[start]--;
+			return true;
+		}
+		return false;
+	}	
+	else{
+		if(copies[start] > 0){
+			copies[start]--;
+			return true;
+		}
+		return false;
+	}
+}

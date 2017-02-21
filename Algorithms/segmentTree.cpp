@@ -19,7 +19,7 @@ using namespace std;
 lli constructSegmentTreeUtil(vector<lli> &v,lli* segmentTree,lli start, lli end, lli pos){
 	if (start==end){
 		segmentTree[pos] = v[start];
-		return v[start];
+		return segmentTree[pos];
 	}
 	lli mid((start+end)/2);
 	segmentTree[pos] = min(constructSegmentTreeUtil(v,segmentTree,start,mid,2*pos+1),constructSegmentTreeUtil(v,segmentTree,mid+1,end,2*pos+2));
