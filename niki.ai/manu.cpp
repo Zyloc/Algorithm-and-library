@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define lli long long int
-const int MOD = 1e9+7;
+const long long int MOD = 1e9+7;
 void multiply(lli F[2][2], lli M[2][2]){
 	lli x = (F[0][0]*M[0][0] + F[0][1]*M[1][0])%MOD;
 	lli y = (F[0][0]*M[0][1] + F[0][1]*M[1][1])%MOD;
