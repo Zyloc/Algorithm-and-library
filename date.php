@@ -1,0 +1,1 @@
+<?php $d=strtotime("01.01.2017");$i=0;while($i <53){echo date('d.m.Y', $d)."\n";$d = strtotime("+7 day", $d);$i++;} ?>

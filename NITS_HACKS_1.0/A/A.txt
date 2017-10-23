@@ -1,0 +1,1 @@
+You are given a tree of N nodes each having initial value Ai ( 1 <= i <= N). You have perform q operation in each operation you have to add value "x" in simple path from node "a" to "b". Print the final value at node i ( 1 <= i <=N ).

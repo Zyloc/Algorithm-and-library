@@ -4,12 +4,17 @@
 #include <bits/stdc++.h>
 #define lli long long int
 using namespace std;
-const lli MAX = 1e5+1;
+const lli MAX = 3e5+2;
 const lli MAX_LOG = 22;
+struct dataType{
+	lli start,end,costSoFar,clientId;
+};
 lli	level[MAX];
 lli parent[MAX];
 lli bit[MAX][MAX_LOG];
 vector<lli> tree[MAX];
+vector<dataType> upQuery[MAX],downQuery[MAX];
+lli ans[MAX];
 void dfs(lli from,lli processing,lli depth){
 	parent[processing] = from;
 	level[processing] = depth;
@@ -60,20 +65,25 @@ void lcaInit(lli size){
 int main(){
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-	lli n,x,y;
-	cin>>n;
+	lli n,x,y,m;
+	cin>>n>>m;
 	for(int i=0;i<n-1;i++){
 		cin>>x>>y;
-		x--;y--;
 		tree[x].push_back(y);
 		tree[y].push_back(x);
 	}
-	dfs(0, 0, 0);
+	dfs(1, 1, 1);
 	lcaInit(n);
-	for (int i=0;i<1;i++){
+	for (int i=0;i<m;i++){
 		cin>>x>>y;
-		x--,y--;
-		printf("%lld\n",lca_query(n,x,y)+1);
+		lli lca(lca_query(x,y));
+		dataType temp1,temp2;
+		temp1.start = x;
+		temp1.end = lca;
+		temp1.clientId = i;
+		temp1.costSoFar = 0;
+		upQuery[x].push_back(temp1);
+		temp2.start = lca
 	}
 	return 0;
 }

@@ -1,0 +1,9 @@
+You are given N numbers. You have to print number of subset such that their XOR sum is equal to "K".
+
+Note: 
+a) Two subsets (A and B) are considered different if atleast one number in subset "A" is from different index than subset "B".
+b) Xor sum is XOR ( ^ ) of all the numbers in subset.
+
+Constraints:
+1 <= Ai <= 10<pow>18</pow>
+1 <= N <= 40
