@@ -1,105 +1,58 @@
 /*
- * Satyam Swarnkar (Zyloc), Nit Silchar
+ * I felt , I felled and I failed :(
+ * Satyam Swarnkar (Zyloc), NIT Silchar
 */
-#include <bits/stdc++.h>  
+#include <bits/stdc++.h>
+#define lli  int
 using namespace std;
-#define loop(i,start,end) for (int i=start;i<=end;i++)
-#define pool(i,start,end) for(int i=start;i>=end;i--)
-#define zyloc() lli t;cin>>t;while(t--)
-#define vi(v) vector <long long  int> v;
-#define pb(n) push_back(n)
-#define mp(a,b) make_pair(a,b)
-#define fill(a,value) memset(a,value,sizeof(a)) 
-#define MOD 1000000007
-#define PI  3.14159265358979323846
-#define MAX 1000002
-#define vpi(v) vector <pair <long long int, long long int> > v
-#define lli long long int 
-#define debug() cout<<"######"<<endl 
-lli constructSegmentTreeUtil(vector<lli> &v,lli* segmentTree,lli start, lli end, lli pos){
-	if (start==end){
-		segmentTree[pos] = v[start];
-		return segmentTree[pos];
+const int MAX(524288);
+lli minTree[MAX];
+lli n;
+vector<lli> input(MAX);
+void create(lli left,lli  right,lli index){	
+	if(left == right){
+		minTree[index] = input[left];
+		return;
 	}
-	lli mid((start+end)/2);
-	segmentTree[pos] = min(constructSegmentTreeUtil(v,segmentTree,start,mid,2*pos+1),constructSegmentTreeUtil(v,segmentTree,mid+1,end,2*pos+2));
-	return segmentTree[pos];
-}
-lli* constructSegmentTree(vector<lli> &v){
-	lli maxSize(2*pow(2,ceil(log2(v.size())))-1);
-	lli* segmentTree = new lli[maxSize];
-	constructSegmentTreeUtil(v,segmentTree,0,v.size()-1,0);
-	return segmentTree; 
-}
-lli rangeMinimumQueryUtil(lli* segmentTree,lli segmentStart,lli segmentEnd,lli qstart,lli qend,lli pos){
-	if (qstart<= segmentStart and qend >= segmentEnd) {
-		return segmentTree[pos];
-	}
-	if (qstart > segmentEnd || qend < segmentStart){
-		return INT_MAX;
-	}	
-	lli mid((segmentStart+segmentEnd)/2);
-	return min(rangeMinimumQueryUtil(segmentTree,segmentStart,mid,qstart,qend,2*pos+1),rangeMinimumQueryUtil(segmentTree,mid+1,segmentEnd,qstart,qend,2*pos+2));
+	lli mid((left+right)>>1);
+	create(left,mid,2*index+1);
+	create(mid+1,right,2*index+2);
+	minTree[index] = min(minTree[2*index+1],minTree[2*index+2]);
 }
 
-lli rangeMinimumQuery(lli* segmentTree,lli n,lli qstart,lli qend){
-	return rangeMinimumQueryUtil(segmentTree,0,n-1,qstart,qend,0);
-}
-lli updateSegmentTreeUtil(lli* segmentTree,lli segmentStart,lli segmentEnd,lli qstart,lli qend,lli value,lli pos){
-	lli mid((segmentStart+segmentEnd)/2);
-	if (mid == segmentStart){
-		if (qstart<= segmentStart  and qend >= segmentEnd){
-			segmentTree[2*pos+1] += value; 
-			segmentTree[2*pos+2] += value;
-		}
-		else if (qstart > segmentStart){
-			segmentTree[2*pos+2] += value;
-		}
-		else{
-			segmentTree[2*pos+1] += value;
-		}
+void updateTree(lli tStart,lli tEnd,lli index,lli updateIndex,lli updateValue){
+	lli mid((tStart+tEnd)>>1);
+	if(updateIndex < tStart or updateIndex > tEnd){
+		return;
 	}
-	else{
-		// left tree
-		if (qend <= mid ){
-			updateSegmentTreeUtil(segmentTree,segmentStart,mid,qstart,qend,value,2*pos+1);
-		}
-		// right tree
-		else if (qstart >= mid+1 ){
-			updateSegmentTreeUtil(segmentTree,mid+1,segmentEnd,qstart,qend,value,2*pos+2);	
-		}
-		else{
-			updateSegmentTreeUtil(segmentTree,segmentStart,mid,qstart,qend,value,2*pos+1);	
-			updateSegmentTreeUtil(segmentTree,mid+1,segmentEnd,qstart,qend,value,2*pos+2);
-		}
+	if(tStart == tEnd){
+		minTree[index] = updateValue;
+		return;
 	}
-	segmentTree[pos] = min(segmentTree[2*pos+1],segmentTree[2*pos+2]);
-	return 0;
+	updateTree(tStart,mid,2*index+1,updateIndex,updateValue);
+	updateTree(mid+1,tEnd,2*index+2,updateIndex,updateValue);
+	minTree[index] = min(minTree[2*index+1],minTree[2*index+2]);
 }
-// update the values from qstart to qend by 'value'
-lli updateSegmentTree(lli* segmentTree,lli n,lli qstart, lli qend,lli value){
-	updateSegmentTreeUtil(segmentTree,0,n-1,qstart,qend,value,0);
-	loop(i,0,6){
-		cout<<segmentTree[i]<<" ";
+
+lli getMinimum( lli tStart,lli tEnd,lli index,lli left,lli right){
+	if(tStart > right or tEnd < left){
+		return INT_MAX;
 	}
-	cout<<endl;
-	return 0;
+	if(left <= tStart and right >= tEnd){
+		return minTree[index];
+	}
+	lli mid((tStart+tEnd)>>1);
+	return min(getMinimum(tStart,mid,2*index+1,left,right),getMinimum(mid+1,tEnd,2*index+2,left,right));
 }
+
 int main(){
-	lli n,x,y,z;
-	cin>>n;
-	vi(v);
-	loop(i,0,n-1){
-		cin>>x;
-		v.pb(x);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cin>>n>>s>>l;
+	for(int i(0);i<n;i++){
+		cin>>input[i];
 	}
-	lli* segmentTree(constructSegmentTree(v));
-    loop(i,0,15){
-    	cout<<segmentTree[i]<<" ";
-    }
-    /*loop(i,0,n-1){
-    	cin>>x>>y>>z;
-    	cout<<updateSegmentTree(segmentTree,n,x,y,z)<<endl;
-    }*/
+	create(0,(MAX>>1)-1,0);
+	updateTree(0,(MAX>>1)-1,0,5,10);
     return 0;
-}	
+}

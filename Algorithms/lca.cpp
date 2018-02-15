@@ -76,14 +76,14 @@ int main(){
 	lcaInit(n);
 	for (int i=0;i<m;i++){
 		cin>>x>>y;
-		lli lca(lca_query(x,y));
+		lli lca(lca_query(n,x,y));
 		dataType temp1,temp2;
 		temp1.start = x;
 		temp1.end = lca;
 		temp1.clientId = i;
 		temp1.costSoFar = 0;
 		upQuery[x].push_back(temp1);
-		temp2.start = lca
+		temp2.start = lca;
 	}
 	return 0;
 }

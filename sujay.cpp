@@ -1,62 +1,28 @@
+/*
+ * Richie who's not Rich 
+*/
 #include <bits/stdc++.h>
+#define lli long long int
 using namespace std;
-map<char,char> mp;
-map<char,bool> cache;
-char solve(char c){
-    if(cache.find(c)!= cache.end()){
-        return '0';
-    }
-    //cout<<c<<endl;
-    if(mp.find(c) == mp.end()){
-        return '*';
-    }
-    if(mp[c] >= '0' and mp[c]<='9'){
-    	return mp[c];
-    }
-    cache[c] = true;
-    return solve(mp[c]);
-}
 int main(){
-    int t,dummy(1);
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        char x,y;
-        mp.clear();
-        test.clear();
-        for(int i(0);i<n;i++){
-            cin>>x>>y;
-            mp[x] = y;
-        }
-        int q;
-        cin>>q;
-        cout<<"#"<<dummy<<endl;
-        string test;
-        for(int i(0);i<q;i++){
-            cin>>test;
-            string answer;
-            bool check(false);
-            for (int j = 0; j <test.length(); ++j) {
-                cache.clear();
-                string temp="";
-                temp+=(solve(test[j]));
-                //cout<<test[j]<<endl;
-                if(temp == "*"){
-                    cout<<-1<<endl;
-                    check = true;
-                    break;
-                }
-                else{
-                    answer +=  temp;
-                }
-            }
-            if(!check){
-                cout<<answer<<endl;
-            }
-        }
-        dummy++;
-            
-    }
-    return 0;
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	lli t;
+	cin>>t;
+	while(t--){
+		lli n,c,x;
+		cin>>n>>c;
+		vector<lli> input;
+		for(int i(0);i<n;i++){
+			cin>>x;
+			input.push_back(c-x);
+		}
+		lli max_so_far(0), curr_max(0);
+		for (int i(0); i < n; i++){
+			curr_max = max(input[i], curr_max+input[i]);
+			max_so_far = max(max_so_far, curr_max);
+		}
+		cout<<max_so_far<<endl;
+	}
+	return 0;
 }

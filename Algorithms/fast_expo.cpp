@@ -21,6 +21,6 @@ lli fast_expo(lli base, lli expo,lli MODE){
 
 int main(){
 	lli base,expo;
-	cout<<(-15980456+64735492)<<endl;
+	cout<<((3*fast_expo(2,MOD-2,MOD))%MOD*9)%MOD<<endl;
 	return 0;
 }

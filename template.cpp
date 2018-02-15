@@ -1,5 +1,5 @@
 /*
- * Satyam Swarnkar (Zyloc), NIT Silchar
+ * Richie who's not Rich 
 */
 #include <bits/stdc++.h>
 #define lli long long int
